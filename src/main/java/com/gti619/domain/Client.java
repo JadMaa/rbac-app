@@ -4,13 +4,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-// Model of our client in our mongo db
+// Modele du client dans la BD mongo
 @Document(collection = "clients")
 public class Client {
 
     private String name;
     private String description;
-    // this is the type of the client RESIDENTIAL or BUSINESS
+    // Type du client (RESIDENTIAL ou BUSINESS)
     private String type;
     private Date creationDate;
 

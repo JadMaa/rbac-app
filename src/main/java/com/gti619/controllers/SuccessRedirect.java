@@ -16,7 +16,7 @@ public class SuccessRedirect {
         return "login";
     }
 
-    // This redirect to the good page, if you are admin, you go to admins page, if you are a residential , you go to residential
+    // Rediriger a une page successful dependamment du role (admin, residentiel ou business)
     @GetMapping("/success")
     public String redender(Authentication authentication) throws Exception {
 

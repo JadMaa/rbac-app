@@ -1,6 +1,6 @@
 package com.gti619.configurations;
 
-//This class is a static class that shared by everyone. So the Admin configuration is the same for everyone.
+// Classe partager par tous les utilisateurs afin que la configuration de l'admin soit pareil pour tout le monde.
 
 public class AuthParam {
 

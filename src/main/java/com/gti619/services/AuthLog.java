@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Date;
 
-// this witre to authLogs.txt what happen to the system.
+// Journalisation des connexions
 public class AuthLog {
 
     public static void write(String msg) throws Exception{

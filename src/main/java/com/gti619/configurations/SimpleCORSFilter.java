@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-//https://stackoverflow.com/questions/22846309/cors-filter-not-working-as-intended
+// Source: https://stackoverflow.com/questions/22846309/cors-filter-not-working-as-intended
 
-//This is a filter that protect the user form cross side request forgery. So, the hack can't still the session of the user
+// Filtre qui protege l'utilisateur d'un cross side request forgery. Le pirate ne peut donc pas voler une session
+
+// Le code suivant a ete directement tire de la source : https://stackoverflow.com/questions/22846309/cors-filter-not-working-as-intended
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)

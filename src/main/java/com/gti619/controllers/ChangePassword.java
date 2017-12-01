@@ -18,7 +18,7 @@ public class ChangePassword {
     }
 
     @GetMapping
-    // renderd the change-password page
+    // Render la page change-password
     public String renderPage(){
         return "change-password";
     }
@@ -26,7 +26,7 @@ public class ChangePassword {
 
     @PostMapping
     @ResponseBody
-    //This change the password of the user Using our service PasswordManager
+    // Change le password de l'utilisateur en utilisant le service PasswordManager
     public String changPassword(@RequestParam String newPassword, @RequestParam String oldPassword, Authentication authentication){
         return this.passwordManager.change(authentication.getName(),newPassword,oldPassword);
     }

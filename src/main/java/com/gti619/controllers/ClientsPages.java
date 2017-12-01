@@ -28,13 +28,13 @@ public class ClientsPages {
     }
 
     @GetMapping("/residential")
-    // This render page and filter by client type
+    // Render la page et filtre dependamment du type de client
     public String renderClientResidPage(Model model, Authentication authentication){
-        //protect, only user with residential role can access. If someone else, he get redirect to the dinied page
+        // Donner acces seulement a un utilisateur avec role residential. Sinon le rediriger vers denied
         if(!authentication.getAuthorities().toString().contains("RESIDENTIAL")){ return "redirect:/denied";}
 
         model.addAttribute("type","RESIDENTIAL");
-        //Render Only residential Clients
+        //Render les clients residentiels seulement
         model.addAttribute("clients",
                 StreamSupport.stream(this.clientRepository.findAll().spliterator(),false)
                     .filter( client -> client.getType().equalsIgnoreCase("RESIDENTIAL"))
@@ -46,13 +46,13 @@ public class ClientsPages {
 
 
     @GetMapping("/business")
-    // This render page and filter by client type
+    // Render la page et filtre dependamment du type de client
     public String renderClientBusiPage(Model model, Authentication authentication){
-        //protect, only user with business role can access. If someone else, he get redirect to the dinied page
+        // Donner acces seulement a un utilisateur avec role business. Sinon le rediriger vers denied
         if(!authentication.getAuthorities().toString().contains("BUSINESS")){ return "redirect:/denied";}
 
         model.addAttribute("type","BUSINESS");
-        //Render Only business Clients
+        //Render les clients business seulement
         model.addAttribute("clients",
                 StreamSupport.stream(this.clientRepository.findAll().spliterator(),false)
                     .filter( client -> client.getType().equalsIgnoreCase("BUSINESS"))
@@ -63,10 +63,10 @@ public class ClientsPages {
     }
 
     @PostMapping
-    // add another client
+    // Ajouter un nouveau client
     public String renderClientBusiPage(Model model, Authentication authentication, @ModelAttribute Client client, @RequestParam String password){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        // verify the role of the user and if he enter the good password
+        // Verifier que l'utilisateur met le bon password avant d'ajouter le client a la liste
         if(bCryptPasswordEncoder.matches(password,this.userRepository.findByUsername(authentication.getName()).getPassword())){
             if( authentication.getAuthorities().toString().contains(client.getType().toUpperCase())){
                 this.clientRepository.save(client);

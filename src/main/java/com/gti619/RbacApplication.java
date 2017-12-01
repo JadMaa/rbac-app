@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class RbacApplication {
 
+	// Le main de l'application
 	public static void main(String[] args) {
 		SpringApplication.run(RbacApplication.class, args);
 	}

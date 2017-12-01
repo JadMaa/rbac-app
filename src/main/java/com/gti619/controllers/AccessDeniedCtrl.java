@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/denied")
 public class AccessDeniedCtrl {
 
-    // send denied.html
+    // Envoie la page denied.html
     @RequestMapping
     public String denied(){
         return "denied";

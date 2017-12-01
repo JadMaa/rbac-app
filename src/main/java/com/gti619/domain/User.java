@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-// Model of our users in our mongo db
+// Model des utilisateurs dans la BD de mongo
 @Document(collection = "users")
 public class User implements UserDetails {
 
@@ -30,7 +30,7 @@ public class User implements UserDetails {
     public User(String username, String password, List<String> authorities) {
         this.username = username;
         this.setPassword(password);
-        //Bcrypt use Blowfist version of the hash
+        //Bcrypt utilise la version Blowfish pour le hash
         this.hashVersion = "Blowfish";
         this.authorities = authorities;
         this.accountNonExpired = true;
@@ -62,7 +62,7 @@ public class User implements UserDetails {
         return password;
     }
 
-    // Hash the password
+    // Hash le password
     public void setPassword(String password) {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         this.password = bCryptPasswordEncoder.encode(password);

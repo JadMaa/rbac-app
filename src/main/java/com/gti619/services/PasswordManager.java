@@ -25,7 +25,7 @@ public class PasswordManager {
     public String change(String username, String newPassword) {
 
         if(AuthParam.isComplexPassword()){
-            //This regex verify that the user entered min 8 length password, one upper and lower case letter, one number and one special char
+            // Verifie que le nouveau mdp est au moins 8 caracteres, contient une minuscule, une majuscule, un chiffre et un caractere special
             String PASSWORD_PATTERN = "((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{8,50})";
             Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
             Matcher matcher = pattern.matcher(newPassword);
@@ -36,7 +36,7 @@ public class PasswordManager {
 
         User user = this.userRepository.findByUsername(username);
 
-        // Verify that the user didn't use an old password
+        // Verifie que le nouveau mdp n'est pas un ancien mdp
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         boolean isNotOldPassword = user.getOldPasswords().stream()
                                         .filter( pass -> bCryptPasswordEncoder.matches(newPassword,pass))
@@ -54,21 +54,21 @@ public class PasswordManager {
         user.setPassword(newPassword);
 
         try {
-            AuthLog.write("The password of the user "+ username+" changed.");
+            AuthLog.write("The password of the user "+ username+" has changed.");
         } catch (Exception e) {
             e.printStackTrace();
         }
         this.userRepository.save(user);
 
-        return "Password changed.";
+        return "Password changed successfully.";
     }
 
     public String change(String username, String newPassword, String oldPassword) {
-         // verify that the user entered his current password before to change
+         // Verifie que le mdp actuel match avant le changement de mdp
         User user = this.userRepository.findByUsername(username);
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         if (!bCryptPasswordEncoder.matches(oldPassword,user.getPassword())){
-            return "The password entered dosn't match with the current one.";
+            return "The password entered doesn't match with the current one.";
         }
 
         return change(username,newPassword);

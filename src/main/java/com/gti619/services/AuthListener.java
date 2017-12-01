@@ -33,13 +33,13 @@ public class AuthListener {
 
             if(user.getUnlockDate()==null){
                 Date lockUtil = new Date();
-                // lock the user for some seconds. Ex : if the Auth.getTime is 30, the user is lock for 30 sec.
+                // Lock l'utilisateur pour x secondes . Ex : si Auth.getTime est = 30, l'utilisateur est locked pour 30 sec
                 lockUtil.setTime(lockUtil.getTime() + (1000 * AuthParam.getLockTime()));
                 user.setUnlockDate(lockUtil);
-                AuthLog.write("The user " +username+" have been lock for "+AuthParam.getLockTime()+" secondes.");
+                AuthLog.write("The user " +username+" has been locked for "+AuthParam.getLockTime()+" seconds.");
             } else {
-                // if the user fail again after the lock, the account is lock and he need to contact the admin
-                AuthLog.write("The user " +username+" have been lock, he need to contact the admin.");
+                // Si l'utilisateur est encore locked, il doit contacter l'admin
+                AuthLog.write("The user " +username+" has been locked, contact the admin please.");
                 user.setAccountNonLocked(false);
             }
 
@@ -50,7 +50,7 @@ public class AuthListener {
         this.userRepository.save(user);
     }
 
-    // When the user successfull login , all the stats get initialise ( unlock to null and attempts fail to 0)
+    // Quand l'utilisateur se connecte sans problemes, remettre tous a 0 (tentatives, etc)
     @EventListener
     public void authenticationSuccess(AuthenticationSuccessEvent event) {
         User userEvent = (User) event.getAuthentication().getPrincipal();
