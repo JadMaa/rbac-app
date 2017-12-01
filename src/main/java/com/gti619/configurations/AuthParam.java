@@ -1,5 +1,7 @@
 package com.gti619.configurations;
 
+//This class is a static class that shared by everyone. So the Admin configuration is the same for everyone.
+
 public class AuthParam {
 
     private static long maxAttempt = 3;

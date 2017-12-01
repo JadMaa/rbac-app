@@ -17,7 +17,9 @@ public class AdminPages {
 
     @GetMapping("/param")
     public String getParam(Model model, Authentication authentication){
+        //protect, only user with admin role can access. If someone else, he get redirect to the dinied page
         if(!authentication.getAuthorities().toString().contains("ADMIN")){ return "redirect:/denied";}
+
         model.addAttribute("lockTime", AuthParam.getLockTime());
         model.addAttribute("maxAttempt", AuthParam.getMaxAttempt());
         model.addAttribute("complexPassword", AuthParam.isComplexPassword());
@@ -25,11 +27,14 @@ public class AdminPages {
     }
 
     @PostMapping("/param")
+    //When changed the static class AuthParam is affected form the form values
     public String getParam(Model model,Authentication authentication,
                            @RequestParam long lockTime,
                            @RequestParam long maxAttempt,
                            @RequestParam( value = "complexPassword", required = false) String complexPassword){
+        //protect, only user with admin role can access. If someone else, he get redirect to the dinied page
         if(!authentication.getAuthorities().toString().contains("ADMIN")){ return "redirect:/denied";}
+
         AuthParam.setLockTime(lockTime);
         if ( complexPassword == null){
             AuthParam.setComplexPassword(false);

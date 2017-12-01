@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+// Model of our users in our mongo db
 @Document(collection = "users")
 public class User implements UserDetails {
 
@@ -29,6 +30,7 @@ public class User implements UserDetails {
     public User(String username, String password, List<String> authorities) {
         this.username = username;
         this.setPassword(password);
+        //Bcrypt use Blowfist version of the hash
         this.hashVersion = "Blowfish";
         this.authorities = authorities;
         this.accountNonExpired = true;
@@ -60,6 +62,7 @@ public class User implements UserDetails {
         return password;
     }
 
+    // Hash the password
     public void setPassword(String password) {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         this.password = bCryptPasswordEncoder.encode(password);

@@ -25,25 +25,34 @@ public class UsersManagement {
 
     @GetMapping
     public String renderPage(Model model, Authentication authentication){
+        //protect, only user with admin role can access. If someone else, he get redirect to the dinied page
         if(!authentication.getAuthorities().toString().contains("ADMIN")){ return "redirect:/denied";}
+
         model.addAttribute("users", this.userRepository.findAll());
         return "/admin/users-management";
     }
 
+    // The admin can change the password of any user. When we got a post on this path, the service passwordManager change the password
     @PostMapping("/password")
     @ResponseBody
     public String changePassword(@RequestParam String username,@RequestParam String newPassword, Authentication authentication){
+        //protect, only user with admin role can access. If someone else, he get redirect to the dinied page
         if(!authentication.getAuthorities().toString().contains("ADMIN")){ return "redirect:/denied";}
+
         return this.passwordManager.change(username,newPassword);
     }
 
+    // when the admin click on unlock, the user get unlock
     @PostMapping("/unlock")
     @ResponseBody
     public String unlock(@RequestParam String username, Authentication authentication){
+        //protect, only user with admin role can access. If someone else, he get redirect to the dinied page
         if(!authentication.getAuthorities().toString().contains("ADMIN")){ return "redirect:/denied";}
+
         User user = this.userRepository.findByUsername(username);
         user.setUnlockDate(null);
         user.setAccountNonLocked(true);
+        this.userRepository.save(user);
         return "The account have been unlock.";
     }
 

@@ -28,8 +28,9 @@ public class ClientsPages {
     }
 
     @GetMapping("/residential")
+    // This render page and filter by client type
     public String renderClientResidPage(Model model, Authentication authentication){
-
+        //protect, only user with residential role can access. If someone else, he get redirect to the dinied page
         if(!authentication.getAuthorities().toString().contains("RESIDENTIAL")){ return "redirect:/denied";}
 
         model.addAttribute("type","RESIDENTIAL");
@@ -45,8 +46,9 @@ public class ClientsPages {
 
 
     @GetMapping("/business")
+    // This render page and filter by client type
     public String renderClientBusiPage(Model model, Authentication authentication){
-
+        //protect, only user with business role can access. If someone else, he get redirect to the dinied page
         if(!authentication.getAuthorities().toString().contains("BUSINESS")){ return "redirect:/denied";}
 
         model.addAttribute("type","BUSINESS");
@@ -61,8 +63,10 @@ public class ClientsPages {
     }
 
     @PostMapping
+    // add another client
     public String renderClientBusiPage(Model model, Authentication authentication, @ModelAttribute Client client, @RequestParam String password){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        // verify the role of the user and if he enter the good password
         if(bCryptPasswordEncoder.matches(password,this.userRepository.findByUsername(authentication.getName()).getPassword())){
             if( authentication.getAuthorities().toString().contains(client.getType().toUpperCase())){
                 this.clientRepository.save(client);

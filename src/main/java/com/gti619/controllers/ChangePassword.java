@@ -18,12 +18,15 @@ public class ChangePassword {
     }
 
     @GetMapping
+    // renderd the change-password page
     public String renderPage(){
         return "change-password";
     }
 
+
     @PostMapping
     @ResponseBody
+    //This change the password of the user Using our service PasswordManager
     public String changPassword(@RequestParam String newPassword, @RequestParam String oldPassword, Authentication authentication){
         return this.passwordManager.change(authentication.getName(),newPassword,oldPassword);
     }

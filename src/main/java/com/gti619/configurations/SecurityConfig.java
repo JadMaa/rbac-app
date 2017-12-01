@@ -22,6 +22,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 
     @Autowired
     public void globaConfig(AuthenticationManagerBuilder auth) throws Exception{
+        //This test if the user entered the good authInfo
         auth.userDetailsService(this.userAuthService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
@@ -30,15 +31,17 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
         http
             .csrf().disable()
             .authorizeRequests()
-//            .antMatchers("/clients/business").access("hasRole('ROLE_ROLE_BUSINESS')")
-//            .antMatchers("/clients/residential").access("hasRole('ROLE_RESIDENTIAL')")
+                //This is the public ressources
             .antMatchers( "/","/css/**", "/js/**", "/img/**","/init/**").permitAll()
             .anyRequest()
             .authenticated()
             .and()
             .formLogin()
+                // this is the path of our login page
             .loginPage("/")
             .permitAll()
+                //When successful login, we are redirected to the /success. This endpoint refirect to the good one for each role
+                // - see SuccessRedirect.java
             .defaultSuccessUrl("/success")
             .and()
             .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");

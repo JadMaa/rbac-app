@@ -12,15 +12,16 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-public class AuthListiner {
+public class AuthListener {
 
     private UserRepository userRepository;
 
     @Autowired
-    public AuthListiner(UserRepository userRepository) {
+    public AuthListener(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
+    // When
     @EventListener
     public void authenticationFailed( AuthenticationFailureBadCredentialsEvent event) throws Exception {
 
@@ -32,9 +33,13 @@ public class AuthListiner {
 
             if(user.getUnlockDate()==null){
                 Date lockUtil = new Date();
+                // lock the user for some seconds. Ex : if the Auth.getTime is 30, the user is lock for 30 sec.
                 lockUtil.setTime(lockUtil.getTime() + (1000 * AuthParam.getLockTime()));
                 user.setUnlockDate(lockUtil);
+                AuthLog.write("The user " +username+" have been lock for "+AuthParam.getLockTime()+" secondes.");
             } else {
+                // if the user fail again after the lock, the account is lock and he need to contact the admin
+                AuthLog.write("The user " +username+" have been lock, he need to contact the admin.");
                 user.setAccountNonLocked(false);
             }
 
@@ -45,6 +50,7 @@ public class AuthListiner {
         this.userRepository.save(user);
     }
 
+    // When the user successfull login , all the stats get initialise ( unlock to null and attempts fail to 0)
     @EventListener
     public void authenticationSuccess(AuthenticationSuccessEvent event) {
         User userEvent = (User) event.getAuthentication().getPrincipal();

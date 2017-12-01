@@ -11,10 +11,12 @@ server:
   session:
     timeout: 60
 #  ssl:
-#   key-store: classpath:keystore.jks
+#   key-store: classpath:keystore.p12
 #   key-password: secret
-#   key-alias: tomcat
+#   key-alias: hs
 #   key-store-type: PKCS12
+#   trust-store-password: secret
+#   enabled: true
 logging:
-  level: security
+  level: DEBUG
 

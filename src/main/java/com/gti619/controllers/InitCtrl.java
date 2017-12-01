@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
+// this class is for dev, it initialise the clients and the users of the app
+
 @RestController
 @RequestMapping("/init")
 public class InitCtrl {
