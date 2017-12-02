@@ -59,3 +59,36 @@ Thu Nov 30 16:11:54 EST 2017  :  resid connected to the system.
 Fri Dec 01 15:24:41 EST 2017  :  admin connected to the system.
 Fri Dec 01 15:29:02 EST 2017  :  admin connected to the system.
 Fri Dec 01 15:30:34 EST 2017  :  The password of the user admin changed.
+Sat Dec 02 14:34:45 EST 2017  :  admin connected to the system.
+Sat Dec 02 14:37:03 EST 2017  :  busi connected to the system.
+Sat Dec 02 14:39:27 EST 2017  :  admin connected to the system.
+Sat Dec 02 14:39:38 EST 2017  :  busi connected to the system.
+Sat Dec 02 14:40:02 EST 2017  :  resid connected to the system.
+Sat Dec 02 14:45:08 EST 2017  :  admin connected to the system.
+Sat Dec 02 14:55:22 EST 2017  :  busi connected to the system.
+Sat Dec 02 15:15:12 EST 2017  :  busi connected to the system.
+Sat Dec 02 15:16:29 EST 2017  :  The password of the user busi has changed.
+Sat Dec 02 15:16:49 EST 2017  :  busi connected to the system.
+Sat Dec 02 15:18:42 EST 2017  :  busi connected to the system.
+Sat Dec 02 15:19:53 EST 2017  :  The user busi has been locked for 30 seconds.
+Sat Dec 02 15:20:15 EST 2017  :  admin connected to the system.
+Sat Dec 02 15:20:49 EST 2017  :  busi connected to the system.
+Sat Dec 02 15:23:13 EST 2017  :  The user busi has been locked for 30 seconds.
+Sat Dec 02 15:23:45 EST 2017  :  busi connected to the system.
+Sat Dec 02 15:24:59 EST 2017  :  admin connected to the system.
+Sat Dec 02 15:25:22 EST 2017  :  resid connected to the system.
+Sat Dec 02 15:26:22 EST 2017  :  The user resid has been locked for 30 seconds.
+Sat Dec 02 15:27:05 EST 2017  :  resid connected to the system.
+Sat Dec 02 15:27:34 EST 2017  :  admin connected to the system.
+Sat Dec 02 15:27:50 EST 2017  :  resid connected to the system.
+Sat Dec 02 15:32:07 EST 2017  :  admin connected to the system.
+Sat Dec 02 15:33:07 EST 2017  :  The password of the user busi has changed.
+Sat Dec 02 15:33:22 EST 2017  :  busi connected to the system.
+Sat Dec 02 15:34:15 EST 2017  :  The password of the user busi has changed.
+Sat Dec 02 15:34:58 EST 2017  :  busi connected to the system.
+Sat Dec 02 15:49:35 EST 2017  :  admin connected to the system.
+Sat Dec 02 15:52:37 EST 2017  :  The user resid has been locked for 30 seconds.
+Sat Dec 02 15:53:55 EST 2017  :  The user resid has been locked, contact the admin please.
+Sat Dec 02 15:55:02 EST 2017  :  admin connected to the system.
+Sat Dec 02 15:55:27 EST 2017  :  resid connected to the system.
+Sat Dec 02 15:56:53 EST 2017  :  admin connected to the system.

@@ -54,12 +54,12 @@ public class InitCtrl {
 
         this.clientRepository.deleteAll();
 
-        this.clientRepository.save(new Client("Jeff Bezos","This is a rich client","BUSINESS"));
-        this.clientRepository.save(new Client("Jad Maa","This is a poor client","BUSINESS"));
-        this.clientRepository.save(new Client("Marco Polo","This is a rich client","BUSINESS"));
-        this.clientRepository.save(new Client("Francis Coco","This is a rich client","BUSINESS"));
-        this.clientRepository.save(new Client("Ben Coribou","This is a rich client","RESIDENTIAL"));
-        this.clientRepository.save(new Client("Salim Bobo","This is a rich client","RESIDENTIAL"));
+        this.clientRepository.save(new Client("Jeff Bezos","The CEO of Amazon","BUSINESS"));
+        this.clientRepository.save(new Client("Jad Maarabouni","This is a poor client","BUSINESS"));
+        this.clientRepository.save(new Client("Michel Sarkis","This is a rich client","BUSINESS"));
+        this.clientRepository.save(new Client("Samnang Eang","This is a rich client","BUSINESS"));
+        this.clientRepository.save(new Client("John Smith","This is a very rich client","RESIDENTIAL"));
+        this.clientRepository.save(new Client("Tony Bobo","This is another client","RESIDENTIAL"));
 
         return this.clientRepository.findAll();
     }
