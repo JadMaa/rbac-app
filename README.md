@@ -17,6 +17,7 @@ Application web implémentant une gestion d’accès RBAC (Role Base Access Cont
 
 # Démarrer le projet
 1. Télécharger ou cloner le répertoire
+    * git clone https://github.com/JadMaa/rbac-app.git
 1. Ouvrir l’IDE
 1. Pour IntelliJ:
    1. Open file
