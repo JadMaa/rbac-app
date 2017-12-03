@@ -17,13 +17,21 @@ public class AuthListener {
     private UserRepository userRepository;
 
     @Autowired
+    /**
+     * Contructeur par copie d'attribut
+     * @param userRepository l'entrée du type d'utilisateur dans la table
+     */
     public AuthListener(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    // When
     @EventListener
-    public void authenticationFailed( AuthenticationFailureBadCredentialsEvent event) throws Exception {
+    /**
+     * L'écouteur pour une authentication échouée.
+     * @param event l'événement d'authentification
+     * @throws Exception
+     */
+    public void authenticationFailed(AuthenticationFailureBadCredentialsEvent event) throws Exception {
 
         String username = (String) event.getAuthentication().getPrincipal();
         User user= userRepository.findByUsername(username);
@@ -31,7 +39,7 @@ public class AuthListener {
 
         if(user.getConsecutiveAttemptsFail() > AuthParam.getMaxAttempt()){
 
-            if(user.getUnlockDate()==null){
+            if(user.getUnlockDate() == null){
                 Date lockUtil = new Date();
                 // Lock l'utilisateur pour x secondes . Ex : si Auth.getTime est = 30, l'utilisateur est locked pour 30 sec
                 lockUtil.setTime(lockUtil.getTime() + (1000 * AuthParam.getLockTime()));
@@ -42,22 +50,22 @@ public class AuthListener {
                 AuthLog.write("The user " +username+" has been locked, contact the admin please.");
                 user.setAccountNonLocked(false);
             }
-
             user.setConsecutiveAttemptsFail(0);
-
         }
-
         this.userRepository.save(user);
     }
 
-    // Quand l'utilisateur se connecte sans problemes, remettre tous a 0 (tentatives, etc)
     @EventListener
+    /**
+     * L'écouteur pour une authentification réussie.
+     * @param event l'événement d'authentification
+     */
     public void authenticationSuccess(AuthenticationSuccessEvent event) {
         User userEvent = (User) event.getAuthentication().getPrincipal();
+        // Quand l'utilisateur se connecte sans problèmes, remettre tout à 0 (tentatives, etc.).
         User user= userRepository.findByUsername(userEvent.getUsername());
         user.setConsecutiveAttemptsFail(0);
         user.setUnlockDate(null);
         this.userRepository.save(user);
     }
-
 }

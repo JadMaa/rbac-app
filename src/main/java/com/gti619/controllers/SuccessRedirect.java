@@ -12,10 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SuccessRedirect {
 
     @GetMapping
-    public String renderLogin(){
+    public String renderLogin() {
         return "login";
     }
 
+    /**
+     * Rediriger à une page de succès dépendamment du rôle (administrateur, prépoaé aux clients résidentiels, préposé
+     * aux clients d'affaire)
+     * @param authentication les paramètres d'authentification
+     * @return "redirect:..." la page de succès
+     * @throws Exception
+     */
     // Rediriger a une page successful dependamment du role (admin, residentiel ou business)
     @GetMapping("/success")
     public String redender(Authentication authentication) throws Exception {
@@ -23,13 +30,12 @@ public class SuccessRedirect {
         AuthLog.write(authentication.getName()+" connected to the system.");
 
         String roles = authentication.getAuthorities().toString();
-        if(roles.contains("ADMIN")){
+        if(roles.contains("ADMIN")) {
             return "redirect:/admin/param";
-        } else if(roles.contains("RESIDENTIAL")){
+        } else if(roles.contains("RESIDENTIAL")) {
             return "redirect:/clients/residential";
         } else {
             return "redirect:/clients/business";
         }
     }
-
 }

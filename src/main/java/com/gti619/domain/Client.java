@@ -4,7 +4,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-// Modele du client dans la BD mongo
+/**
+ * Le modèle du client dans la BD Mongo.
+ */
 @Document(collection = "clients")
 public class Client {
 

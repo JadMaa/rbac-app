@@ -16,7 +16,7 @@ public class PasswordManagerTest {
     private PasswordManager passwordManager;
 
     @Test
-    public void testChange(){
+    public void testChange() {
         AuthParam.setComplexPassword(false);
 
         String msg = this.passwordManager.change("admin","secret45");
@@ -30,5 +30,4 @@ public class PasswordManagerTest {
         String msg = this.passwordManager.change("admin","Secret45123","secret45123");
         System.out.print(msg);
     }
-
 }

@@ -15,18 +15,27 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled=true)
-public class SecurityConfig  extends WebSecurityConfigurerAdapter{
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Autowired
     private UserAuthService userAuthService;
 
     @Autowired
-    public void globaConfig(AuthenticationManagerBuilder auth) throws Exception{
-        // Tester que l'utilisateur a entrer les bonne infos d'authentification
+    /**
+     * Tester que l'utilisateur a entré les bonnes informations d'authentification.
+     * @param auth les informations d'authentification
+     * @throws Exception
+     */
+    public void globaConfig(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(this.userAuthService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
+    /**
+     * Configurer la connexion http
+     * @param http la requête http
+     * @throws Exception
+     */
     protected void configure(HttpSecurity http) throws Exception {
         http
             .csrf().disable()
@@ -37,14 +46,15 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
             .authenticated()
             .and()
             .formLogin()
-                // Path vers la page de login
+                // Chemin vers la page d'enregistrement de l'utilisateur ("login").
             .loginPage("/")
             .permitAll()
-                // Si login est succes, rediriger vers /success dependament du role.
-                // - voir SuccessRedirect.java
+                /**
+                 * Si l'enregistrement de l'utilisateur est réussi, rediriger vers /success, en fonction du rôle.
+                 * Voir SuccessRedirect.java
+                 */
             .defaultSuccessUrl("/success")
             .and()
             .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
     }
-
 }

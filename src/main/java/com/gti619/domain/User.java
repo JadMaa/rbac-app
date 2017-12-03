@@ -12,7 +12,9 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-// Model des utilisateurs dans la BD de mongo
+/**
+ * Le modèle des types d'utilisateur dans la BD Mongo.
+ */
 @Document(collection = "users")
 public class User implements UserDetails {
 
@@ -30,7 +32,7 @@ public class User implements UserDetails {
     public User(String username, String password, List<String> authorities) {
         this.username = username;
         this.setPassword(password);
-        //Bcrypt utilise la version Blowfish pour le hash
+        // Bcrypt utilise la version Blowfish pour l'algorithme de hachage.
         this.hashVersion = "Blowfish";
         this.authorities = authorities;
         this.accountNonExpired = true;

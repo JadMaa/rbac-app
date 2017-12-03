@@ -7,6 +7,11 @@ import java.util.Date;
 // Journalisation des connexions
 public class AuthLog {
 
+    /**
+     * Écriture de l'événement de ocnnexion
+     * @param msg message à insérer dans l'événement de connexion
+     * @throws Exception
+     */
     public static void write(String msg) throws Exception{
         FileWriter fw = new FileWriter("authLogs.txt",true);
         PrintWriter pw = new PrintWriter(fw,true);

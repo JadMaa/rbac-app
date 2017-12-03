@@ -92,3 +92,9 @@ Sat Dec 02 15:53:55 EST 2017  :  The user resid has been locked, contact the adm
 Sat Dec 02 15:55:02 EST 2017  :  admin connected to the system.
 Sat Dec 02 15:55:27 EST 2017  :  resid connected to the system.
 Sat Dec 02 15:56:53 EST 2017  :  admin connected to the system.
+Sun Dec 03 14:17:50 EST 2017  :  admin connected to the system.
+Sun Dec 03 14:19:13 EST 2017  :  The user resid has been locked for 30 seconds.
+Sun Dec 03 14:20:52 EST 2017  :  The user resid has been locked, contact the admin please.
+Sun Dec 03 14:21:17 EST 2017  :  admin connected to the system.
+Sun Dec 03 14:21:29 EST 2017  :  resid connected to the system.
+Sun Dec 03 14:23:48 EST 2017  :  busi connected to the system.

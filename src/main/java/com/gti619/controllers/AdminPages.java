@@ -1,7 +1,6 @@
 package com.gti619.controllers;
 
 import com.gti619.configurations.AuthParam;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +15,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminPages {
 
     @GetMapping("/param")
-    public String getParam(Model model, Authentication authentication){
-        // Laisser seulement un utilisateur admin avoir acces. Un autre utilisateur sera rediriger vers access denied
-        if(!authentication.getAuthorities().toString().contains("ADMIN")){ return "redirect:/denied";}
-
+    /**
+     * Après vérification, autoriser l'accès à la configuration des paramètres de sécurité d'un compte utilisateur.
+     * @param model le modèle actuel
+     * @param authentication les paramètres d'authentification
+     */
+    public String getParam(Model model, Authentication authentication) {
+        /**
+         * Laisser seulement un utilisateur de type administrateur avoir accès aux fonctions de la page
+         * d'administration. Un autre type d'utilisateur sera redirigé vers la page denied.html.
+         */
+        if(!authentication.getAuthorities().toString().contains("ADMIN")) {
+            return "redirect:/denied";
+        }
         model.addAttribute("lockTime", AuthParam.getLockTime());
         model.addAttribute("maxAttempt", AuthParam.getMaxAttempt());
         model.addAttribute("complexPassword", AuthParam.isComplexPassword());
@@ -27,16 +35,24 @@ public class AdminPages {
     }
 
     @PostMapping("/param")
-    // C'est ici que le admin change les parametres de securite
-    public String getParam(Model model,Authentication authentication,
+    /**
+     * Après vérification, autoriser l'administrateur à modifier les paramètres de sécurité d'un compte utilisateur.
+     * @param model le modèle actuel
+     * @param authentication les paramètres d'authentification
+     */
+    public String getParam(Model model, Authentication authentication,
                            @RequestParam long lockTime,
                            @RequestParam long maxAttempt,
-                           @RequestParam( value = "complexPassword", required = false) String complexPassword){
-        // Laisser seulement un utilisateur admin avoir acces. Un autre utilisateur sera rediriger vers access denied
-        if(!authentication.getAuthorities().toString().contains("ADMIN")){ return "redirect:/denied";}
-
+                           @RequestParam(value = "complexPassword", required = false) String complexPassword) {
+        /**
+         * Laisser seulement un utilisateur de type administrateur avoir accès aux fonctions de la page
+         * d'administration. Un autre type d'utilisateur sera redirigé vers la page denied.html.
+         */
+        if(!authentication.getAuthorities().toString().contains("ADMIN")) {
+            return "redirect:/denied";
+        }
         AuthParam.setLockTime(lockTime);
-        if ( complexPassword == null){
+        if ( complexPassword == null) {
             AuthParam.setComplexPassword(false);
         } else {
             AuthParam.setComplexPassword(true);
