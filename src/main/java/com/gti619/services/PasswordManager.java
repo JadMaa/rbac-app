@@ -18,7 +18,7 @@ public class PasswordManager {
     @Autowired
     /**
      * Constructeur par copie d'attribut
-     * @param userRepository l'entrée du type d'utilisateur dans la table
+     * @param userRepository la table des types d'utilisateur
      */
     public PasswordManager(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -88,7 +88,7 @@ public class PasswordManager {
         User user = this.userRepository.findByUsername(username);
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         if (!bCryptPasswordEncoder.matches(oldPassword,user.getPassword())) {
-            return "The old password entered doesn't match with the current one.";
+            return "The password entered doesn't match with the current one.";
         }
 
         return change(username,newPassword);

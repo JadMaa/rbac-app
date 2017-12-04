@@ -19,7 +19,7 @@ public class AuthListener {
     @Autowired
     /**
      * Contructeur par copie d'attribut
-     * @param userRepository l'entrée du type d'utilisateur dans la table
+     * @param userRepository la table des types d'utilisateur
      */
     public AuthListener(UserRepository userRepository) {
         this.userRepository = userRepository;

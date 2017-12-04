@@ -22,8 +22,8 @@ public class ClientsPages {
     @Autowired
     /**
      * Constructeur par copie d'attributs
-     * @param clientRepository l'entrée du client dans la table
-     * @param userRepository l'entrée du type d'utilisateur dans la table
+     * @param clientRepository la table des clients
+     * @param userRepository la table des types d'utilisateur
      */
     public ClientsPages(ClientRepository clientRepository, UserRepository userRepository) {
         this.clientRepository = clientRepository;

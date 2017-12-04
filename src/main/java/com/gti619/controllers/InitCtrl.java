@@ -26,8 +26,8 @@ public class InitCtrl {
     @Autowired
     /**
      * Constructeur par copie d'attributs
-     * @param userRepository l'entrée de l'utilisateur dans la table
-     * @param clientRepository l'entrée du type de client dans la table
+     * @param userRepository la table des clients
+     * @param clientRepository la table des types d'utilisateur
      */
     public InitCtrl(UserRepository userRepository, ClientRepository clientRepository) {
         this.userRepository = userRepository;
