@@ -6,9 +6,9 @@ Application web implémentant une gestion d’accès RBAC (Role Base Access Cont
 # Installation
 * Pour IntelliJ voici le lien pour télécharger :
 
-* https://www.jetbrains.com/idea/download/#section=windows (Windows)
-* https://www.jetbrains.com/idea/download/#section=mac (macOS)
-* https://www.jetbrains.com/idea/download/#section=linux (Linux)
+  * https://www.jetbrains.com/idea/download/#section=windows (Windows)
+  * https://www.jetbrains.com/idea/download/#section=mac (macOS)
+  * https://www.jetbrains.com/idea/download/#section=linux (Linux)
 
 * Pour Docker, voici le lien pour télécharger (NOTE: Télécharger la version stable):
 
