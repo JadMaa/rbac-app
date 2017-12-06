@@ -45,11 +45,11 @@ public class InitCtrl {
 
         this.clientRepository.save(new Client("Jeff Bezos","The CEO of Amazon",
                 "BUSINESS"));
-        this.clientRepository.save(new Client("Jad Maarabouni","This is a poor client",
+        this.clientRepository.save(new Client("Jad Maarabouni","This is a poor student",
                 "BUSINESS"));
-        this.clientRepository.save(new Client("Michel Sarkis","This is a rich client",
+        this.clientRepository.save(new Client("Michel Sarkis","This is a rich student",
                 "BUSINESS"));
-        this.clientRepository.save(new Client("Samnang Eang","This is a rich client",
+        this.clientRepository.save(new Client("Samnang Eang","This is a rich student",
                 "BUSINESS"));
         this.clientRepository.save(new Client("John Smith","This is a very rich client",
                 "RESIDENTIAL"));
