@@ -17,7 +17,7 @@ public class UserAuthService implements UserDetailsService {
     @Autowired
     /**
      * Constructeur par copie d'attribut
-     * @param userRepository la table des types d'utilisateur
+     * @param userRepository la table des utilisateurs
      */
     public UserAuthService(UserRepository userRepository) {
         this.userRepository = userRepository;

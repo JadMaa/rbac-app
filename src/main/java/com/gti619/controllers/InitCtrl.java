@@ -13,7 +13,7 @@ import java.util.List;
 
 
 /**
- * Initialisation des clients et des types d'utilisateur.
+ * Initialisation des clients et des utilisateurs
  * Remarque : cette classes est destinée aux développeurs.
  */
 @RestController
@@ -26,8 +26,8 @@ public class InitCtrl {
     @Autowired
     /**
      * Constructeur par copie d'attributs
-     * @param userRepository la table des clients
-     * @param clientRepository la table des types d'utilisateur
+     * @param userRepository la table des utilisateurs
+     * @param clientRepository la table des clients
      */
     public InitCtrl(UserRepository userRepository, ClientRepository clientRepository) {
         this.userRepository = userRepository;
@@ -36,7 +36,7 @@ public class InitCtrl {
 
     @GetMapping("/clients")
     /**
-     * Initialisation des clients
+     * Initialisation des clients. Ajout des clients et sauvegarde dans la base de donnees
      * @return this.client.Repository.findAll() la table des clients
      */
     public Iterable<Client> initClients(){
@@ -61,8 +61,8 @@ public class InitCtrl {
 
     @GetMapping("/users")
     /**
-     * Initialisation de types d'utilisateur
-     * @return this.userRepository.findAll() la table des types d'utilisateur
+     * Initialisation des utilisateurs et sauvegarde dans la base de donnees
+     * @return this.userRepository.findAll() la table des utilisateurs
      */
     public Iterable<User> initDB() {
 

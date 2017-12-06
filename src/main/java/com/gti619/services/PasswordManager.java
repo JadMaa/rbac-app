@@ -18,7 +18,7 @@ public class PasswordManager {
     @Autowired
     /**
      * Constructeur par copie d'attribut
-     * @param userRepository la table des types d'utilisateur
+     * @param userRepository la table des utilisateurs
      */
     public PasswordManager(UserRepository userRepository) {
         this.userRepository = userRepository;

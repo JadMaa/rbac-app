@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Le modèle des types d'utilisateur dans la BD Mongo.
+ * Le modèle de l'utilisateur dans la BD Mongo.
  */
 @Document(collection = "users")
 public class User implements UserDetails {

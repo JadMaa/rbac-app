@@ -19,7 +19,7 @@ public class UsersManagement {
     @Autowired
     /**
      * Constructeur par copie d'attributs
-     * @param userRepository la table des types d'utilisateur
+     * @param userRepository la table des utilisateurs
      * @param passwordManager le gestionnaire de mot de passe
      */
     public UsersManagement(UserRepository userRepository, PasswordManager passwordManager) {

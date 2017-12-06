@@ -23,7 +23,7 @@ public class ClientsPages {
     /**
      * Constructeur par copie d'attributs
      * @param clientRepository la table des clients
-     * @param userRepository la table des types d'utilisateur
+     * @param userRepository la table des utilisateurs
      */
     public ClientsPages(ClientRepository clientRepository, UserRepository userRepository) {
         this.clientRepository = clientRepository;
